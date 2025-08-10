@@ -14,6 +14,7 @@ import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import org.slf4j.Logger;
 import xyz.fluxinc.gravestonexpcompat.events.BlockBreakEventListener;
+import xyz.fluxinc.gravestonexpcompat.events.PlayerDeathEventListener;
 
 // The value here should match an entry in the META-INF/mods.toml file
 @Mod(Main.MODID)
@@ -46,6 +47,7 @@ public class Main {
 
     private void registerEvents() {
         MinecraftForge.EVENT_BUS.register(new BlockBreakEventListener());
+        MinecraftForge.EVENT_BUS.register(new PlayerDeathEventListener());
     }
 
     // You can use SubscribeEvent and let the Event Bus discover methods to call
