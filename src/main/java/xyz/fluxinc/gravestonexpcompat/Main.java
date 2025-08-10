@@ -13,6 +13,7 @@ import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import org.slf4j.Logger;
+import xyz.fluxinc.gravestonexpcompat.events.BlockBreakEventListener;
 
 // The value here should match an entry in the META-INF/mods.toml file
 @Mod(Main.MODID)
@@ -39,11 +40,12 @@ public class Main {
 
     private void commonSetup(final FMLCommonSetupEvent event) {
         LOGGER.info("Experience Multiplier: {}", Config.xpMultiplier);
-        if (Config.baseOnLevel) {
-            LOGGER.info("Experience saved is based on level");
-        } else {
-            LOGGER.info("Experience saved is based on raw value");
-        }
+
+        this.registerEvents();
+    }
+
+    private void registerEvents() {
+        MinecraftForge.EVENT_BUS.register(new BlockBreakEventListener());
     }
 
     // You can use SubscribeEvent and let the Event Bus discover methods to call

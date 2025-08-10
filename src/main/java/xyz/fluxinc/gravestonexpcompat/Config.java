@@ -10,15 +10,12 @@ import net.minecraftforge.fml.event.config.ModConfigEvent;
 public class Config {
     private static final ForgeConfigSpec.Builder BUILDER = new ForgeConfigSpec.Builder();
     private static final ForgeConfigSpec.IntValue XP_SAVE = BUILDER.comment("The percentage of XP to save").defineInRange("xp-share", 100, 0, 100);
-    private static final ForgeConfigSpec.BooleanValue RAW_OR_LEVEL = BUILDER.comment("Should the percentage base on raw XP or Level").define("base-on-level", false);
 
     static final ForgeConfigSpec SPEC = BUILDER.build();
     public static float xpMultiplier;
-    public static boolean baseOnLevel;
 
     @SubscribeEvent
     static void onLoad(final ModConfigEvent event) {
         xpMultiplier = ((float)XP_SAVE.get() / 100);
-        baseOnLevel = RAW_OR_LEVEL.get();
     }
 }

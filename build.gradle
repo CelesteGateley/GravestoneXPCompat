@@ -177,7 +177,6 @@ dependencies {
     annotationProcessor 'org.spongepowered:mixin:0.8.5:processor'
 
     implementation 'curse.maven:gravestone-mod-238551:6740170'
-
 }
 
 // This block of code expands all declared replace properties in the specified resource targets.
